@@ -49,7 +49,25 @@ case $driver in
 	radeon)
 		GRAPHICS="xf86-video-ati"
 		;;
+	amdgpu)
+		GRAPHICS="xf86-video-amdgpu"
+		;;
+	amdgpu-pro)
+		GRAPHICS="amdgpu-pro"
+		;;
+	vesa)
+		GRAPHICS="xf86-video-vesa"
+		;;
+	nouveau)
+		GRAPHICS="xf86-video-nouveau"
+		;;
+	intel)
+		GRAPHICS="xf86-video-intel"
+		;;
+	nvidia)
+		GRAPHICS="nvidia"
+		;;
 esac
 
 GRAPHICSVERSION=`pacman -Q $GRAPHICS`
-echo "Graphics Driver: ${bold}$GRAPHICSVERSION${normal}"
+#echo "Graphics Driver: ${bold}$GRAPHICSVERSION${normal}"  #TODO assign correct drivers
