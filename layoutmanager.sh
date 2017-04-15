@@ -173,38 +173,36 @@ done
 #tweak
   case $LAYOUT in
     windows) 
-	gnome-shell-extension-tool -e dash-to-panel@jderose9.github.com
-	gnome-shell-extension-tool -e gnomenu@panacier.gmail.com
-	gnome-shell-extension-tool -e TopIcons@phocean.net
-	gsettings -schemadir ~/.local/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com set org.gnome.shell.extensions.dash-to-panel panel-position 'BOTTOM'
+	gsettings -schemadir ~/.local/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas set org.gnome.shell.extensions.dash-to-panel panel-position 'BOTTOM'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/gnomenu@panacier.gmail.com/schemas set org.gnome.shell.extensions.gnomenu disable-activities-hotcorner 'true'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/gnomenu@panacier.gmail.com/schemas set org.gnome.shell.extensions.gnomenu hide-panel-view 'true'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/gnomenu@panacier.gmail.com/schemas set org.gnome.shell.extensions.gnomenu hide-panel-apps 'true'
+	gnome-shell-extension-tool -e dash-to-panel@jderose9.github.com
+	gnome-shell-extension-tool -e gnomenu@panacier.gmail.com
+	gnome-shell-extension-tool -e TopIcons@phocean.net
 	gnome-shell --replace &
 	;;
     macosx) 
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock intellihide 'true'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock extend-height 'false'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock background-opacity '0.1'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock background-color '#FFFFFF'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-fixed 'false'
 	gnome-shell-extension-tool -e dash-to-dock@micxgx.gmail.com
 	gnome-shell-extension-tool -e hidetopbar@mathieu.bidon.ca
 	gnome-shell-extension-tool -e TopIcons@phocean.net
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock intellihide 'true'
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock extend-height 'false'
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock background-opacity '0.1'
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock background-color '#FFFFFF'
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock dock-fixed 'false'
 	gnome-shell-extension-tool -e dash-to-dock@micxgx.gmail.com
 	gnome-shell --replace &
 	;;
     unity) 
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock intellihide 'false'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock background-opacity '0.7'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock background-color '#2C001E'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-fixed 'true'
 	gnome-shell-extension-tool -e dash-to-dock@micxgx.gmail.com
 	gnome-shell-extension-tool -e TopIcons@phocean.net
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT'
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock intellihide 'false'
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock background-opacity '0.7'
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock background-color '#2C001E'
-	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com set org.gnome.shell.extensions.dash-to-dock dock-fixed 'true'
 	gnome-shell --replace &
 	;;
   esac
-
-
