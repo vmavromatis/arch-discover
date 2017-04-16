@@ -5,6 +5,7 @@
 # Revision history :
 #   14/04/2017 - V1.0 : by bill-mavromatis ALPHA (use on a VM or liveUSB not on your main system, it may affect your extensions)
 #   16/04/2017 - V1.1 : Tweaked gsettings, bugfixes
+#   16/04/2017 - V1.2 : Added more extensions and themes for Unity
 # -------------------------------------------
 
 # check tools availability
@@ -45,7 +46,7 @@ do
   case $1 in
     --windows) declare -a arr=("1160" "608" "1031"); LAYOUT="windows"; shift; ;;
     --macosx) declare -a arr=("307" "1031" "1011"); LAYOUT="macosx"; shift; ;;
-    --unity) declare -a arr=("307" "1031"); shift; LAYOUT="unity"; shift; ;;
+    --unity) declare -a arr=("307" "1031" "19" "744" "2"); shift; LAYOUT="unity"; shift; ;;
     *) echo "Unknown parameter $1"; shift; ;;
   esac
 done
@@ -205,8 +206,18 @@ done
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock background-opacity '0.7'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock background-color '#2C001E'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-fixed 'true'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock extend-height 'true'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock show-running 'false'
 	gnome-shell-extension-tool -e dash-to-dock@micxgx.gmail.com
 	gnome-shell-extension-tool -e TopIcons@phocean.net
+	gnome-shell-extension-tool -e user-theme@gnome-shell-extensions.gcampax.github.com
+	gnome-shell-extension-tool -e Hide_Activities@shay.shayel.org
+	gnome-shell-extension-tool -e Move_Clock@rmy.pobox.com
+	wget https://dl.opendesktop.org/api/files/download/id/1492218139/United%201.2.tar.gz && tar -xvzf United\ 1.2.tar.gz -C ~/.themes/ && mv ~./themes/United\ 1.2 ~/.themes/United
+	gsettings set org.gnome.desktop.interface gtk-theme "United"
+	gsettings set org.gnome.shell.extensions.user-theme name "United"
+	gsettings set org.gnome.desktop.background picture-uri file:///$HOME/.themes/United/wallpaper.png
+	gnome-shell-extension-tool -e user-theme@gnome-shell-extensions.gcampax.github.com
 	gnome-shell --replace &
 	;;
   esac
