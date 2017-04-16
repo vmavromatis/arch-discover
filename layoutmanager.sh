@@ -208,6 +208,7 @@ done
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-fixed 'true'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock extend-height 'true'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock show-running 'false'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock show-apps-at-top 'true'
 	gnome-shell-extension-tool -e dash-to-dock@micxgx.gmail.com
 	gnome-shell-extension-tool -e TopIcons@phocean.net
 	gnome-shell-extension-tool -e user-theme@gnome-shell-extensions.gcampax.github.com
