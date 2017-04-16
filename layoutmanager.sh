@@ -3,8 +3,8 @@
 # Downloads and installs GNOME extensions to match layout
 #
 # Revision history :
-#   14/04/2017 - V1.0 : by bill-mavromatis
-#   ALPHA (use on a VM or liveUSB not on your main system, it may affect your extensions)
+#   14/04/2017 - V1.0 : by bill-mavromatis ALPHA (use on a VM or liveUSB not on your main system, it may affect your extensions)
+#   16/04/2017 - V1.1 : Tweaked gsettings, bugfixes
 # -------------------------------------------
 
 # check tools availability
@@ -34,7 +34,7 @@ then
     echo "Downloads and installs GNOME extensions from Gnome Shell Extensions site https://extensions.gnome.org/"
     echo "Parameters are :"
     echo "  --windows               Windows 10 layout (panel and no topbar)"
-    echo "  --macosx                Mac OS X layout (bottom dock + topbar + autohide)"
+    echo "  --macosx                Mac OS X layout (bottom dock /w autohide + topbar)"
     echo "  --unity                 Unity 7 layout (left dock + topbar)"
     exit 1
 fi
@@ -44,7 +44,7 @@ while test ${#} -gt 0
 do
   case $1 in
     --windows) declare -a arr=("1160" "608" "1031"); LAYOUT="windows"; shift; ;;
-    --macosx) declare -a arr=("307" "1031" "1011" "545" ); LAYOUT="macosx"; shift; ;;
+    --macosx) declare -a arr=("307" "1031" "1011"); LAYOUT="macosx"; shift; ;;
     --unity) declare -a arr=("307" "1031"); shift; LAYOUT="unity"; shift; ;;
     *) echo "Unknown parameter $1"; shift; ;;
   esac
@@ -170,13 +170,18 @@ do
 	rm -f ${TMP_DESC} ${TMP_ZIP} ${TMP_VERSION}
 done
 
-#tweak
+#tweak gsettings
   case $LAYOUT in
     windows) 
-	gsettings -schemadir ~/.local/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas set org.gnome.shell.extensions.dash-to-panel panel-position 'BOTTOM'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/TopIcons@phocean.net/schemas/ set org.gnome.shell.extensions.topicons tray-pos 'Center'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/TopIcons@phocean.net/schemas/ set org.gnome.shell.extensions.topicons tray-order '2'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas set org.gnome.shell.extensions.dash-to-panel panel-position 'BOTTOM'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas set org.gnome.shell.extensions.dash-to-panel location-clock 'STATUSRIGHT'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/gnomenu@panacier.gmail.com/schemas set org.gnome.shell.extensions.gnomenu disable-activities-hotcorner 'true'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/gnomenu@panacier.gmail.com/schemas set org.gnome.shell.extensions.gnomenu hide-panel-view 'true'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/gnomenu@panacier.gmail.com/schemas set org.gnome.shell.extensions.gnomenu hide-panel-apps 'true'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/gnomenu@panacier.gmail.com/schemas set org.gnome.shell.extensions.gnomenu panel-menu-label-text 'Start'
+	gsettings --schemadir ~/.local/share/gnome-shell/extensions/gnomenu@panacier.gmail.com/schemas set org.gnome.shell.extensions.gnomenu disable-panel-menu-keyboard 'true'
 	gnome-shell-extension-tool -e dash-to-panel@jderose9.github.com
 	gnome-shell-extension-tool -e gnomenu@panacier.gmail.com
 	gnome-shell-extension-tool -e TopIcons@phocean.net
@@ -190,7 +195,6 @@ done
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock background-color '#FFFFFF'
 	gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-fixed 'false'
 	gnome-shell-extension-tool -e dash-to-dock@micxgx.gmail.com
-	gnome-shell-extension-tool -e hidetopbar@mathieu.bidon.ca
 	gnome-shell-extension-tool -e TopIcons@phocean.net
 	gnome-shell-extension-tool -e dash-to-dock@micxgx.gmail.com
 	gnome-shell --replace &
