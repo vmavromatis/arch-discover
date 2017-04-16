@@ -213,7 +213,7 @@ done
 	gnome-shell-extension-tool -e user-theme@gnome-shell-extensions.gcampax.github.com
 	gnome-shell-extension-tool -e Hide_Activities@shay.shayel.org
 	gnome-shell-extension-tool -e Move_Clock@rmy.pobox.com
-	wget https://dl.opendesktop.org/api/files/download/id/1492218139/United%201.2.tar.gz && tar -xvzf United\ 1.2.tar.gz -C ~/.themes/ && mv ~./themes/United\ 1.2 ~/.themes/United
+	wget https://dl.opendesktop.org/api/files/download/id/1492218139/United%201.2.tar.gz && tar -xvzf United\ 1.2.tar.gz -C ~/.themes/ && mv ~/.themes/United\ 1.2 ~/.themes/United
 	gsettings set org.gnome.desktop.interface gtk-theme "United"
 	gsettings set org.gnome.shell.extensions.user-theme name "United"
 	gsettings set org.gnome.desktop.background picture-uri file:///$HOME/.themes/United/wallpaper.png
